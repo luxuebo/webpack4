@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'MyFont';
+    src:url('../assets/iconfont/font.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello{
+    font-family: 'MyFont';
+    color:red;
+    background: url('../assets/image/laobi.png');
+}
