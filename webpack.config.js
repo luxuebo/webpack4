@@ -13,31 +13,47 @@ module.exports = {
     filename: 'index[hash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
-  devServer:{
-    open:true,
-    port:3000,
+  devServer: {
+    open: true,
+    port: 3000,
     contentBase: path.join(__dirname, "src"),
     compress: true
   },
   optimization: {
-    minimizer: [ new TerserJSPlugin({}),new OptimizeCSSAssetsPlugin({})]
+    minimizer: [new TerserJSPlugin({
+      chunkFilter: () => false,//是否压缩js文件,默认true
+    }), new OptimizeCSSAssetsPlugin({})]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'src/views/index.html',
-      minify:{
-        removeAttributeQuotes:true,//去掉html标签属性中的引号
+      minify: {
+        removeAttributeQuotes: true,//去掉html标签属性中的引号
         // collapseWhitespace:true //去掉html中的空格
       },
-      hash:true
+      hash: true
     }),
     new MiniCssExtractPlugin({
-      filename:'main.css'
+      filename: 'main.css'
     })
   ],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          },
+          // plugins: [
+          //   ["@babel/plugin-proposal-decorators", { "legacy": true }],
+          //   ["@babel/plugin-proposal-class-properties", { "loose": true }]
+          // ]
+        }
+      },
       {
         test: /\.(css|scss)$/,
         use: [
@@ -47,7 +63,7 @@ module.exports = {
           'sass-loader'
         ]
       },
-      
+
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eto|ttf|otf)$/,
         use: [

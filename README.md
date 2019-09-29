@@ -50,7 +50,10 @@ npm install --save-dev csv-loader xml-loader
 ```
 npm install --save-dev html-webpack-plugin
 ```
-
+## 本地服务
+```
+npm i -D webpack-dev-server
+```
 ## 抽离css插件
 ```
 npm mini-css-extract-plugin -D
@@ -67,4 +70,13 @@ webpack.config.js中添加优化项
 optimization: {
   minimizer: [ new TerserJSPlugin({}),new OptimizeCSSAssetsPlugin({})]
 }
+```
+## babel
+```
+npm i D babel-loader @babel/core @babel/preset-env
+```
+## balel 插件
+```
+npm install --save-dev @babel/plugin-proposal-class-properties //支持es7 比如class
+npm i -D @babel/plugin-proposal-decorators
 ```
