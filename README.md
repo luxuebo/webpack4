@@ -5,6 +5,7 @@
 ## 加载css
   1.安装css loader：npm install css-loader style-loader --save-dev  
   2.配置rules：
+  ```
   {
     test: /\.css$/,
     use: [
@@ -12,6 +13,7 @@
         'css-loader'
     ]
   }
+  ```
 ## 使用sass
 1.安装sass loader：npm install node-sass sass-loader --save-dev  
 2.配置rules:
