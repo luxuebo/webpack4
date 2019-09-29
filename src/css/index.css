@@ -10,3 +10,9 @@
     color:red;
     background: url('../assets/image/laobi.png');
 }
+
+@media (min-resolution: 2dppx) {
+    .image {
+      background-image: url('../assets/image/laobi.png');
+    }
+  }

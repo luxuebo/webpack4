@@ -46,7 +46,25 @@ npm install html-withimg-loader --save-dev
 ```
 npm install --save-dev csv-loader xml-loader  
 ```
-## 打包html 安装插件
+## 打包html 插件
 ```
 npm install --save-dev html-webpack-plugin
+```
+
+## 抽离css插件
+```
+npm mini-css-extract-plugin -D
+```
+## css添加厂商前缀插件
+```
+npm i -D postcss-loader autoprefixer  
+根目录下创建postcss.config.js 添加plugins: [require('autoprefixer')]
+``` 
+## 压缩css插件(会覆盖js的压缩,还需terser-webpack-plugin来压缩js)
+```
+npm install -D optimize-css-assets-webpack-plugin
+webpack.config.js中添加优化项
+optimization: {
+  minimizer: [ new TerserJSPlugin({}),new OptimizeCSSAssetsPlugin({})]
+}
 ```

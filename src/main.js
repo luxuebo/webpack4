@@ -18,9 +18,13 @@ function component() {
     myIcon.src = bg;
     // element.appendChild(myIcon);
 
-    console.log(DataXml);
-    console.log(DataJson);
+    // console.log(DataXml);
+    // console.log(DataJson);
     return element;
 }
 
+let arrFn= () => {
+    console.log('111')
+}
+arrFn()
 document.body.appendChild(component());

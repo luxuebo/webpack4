@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//会覆盖js的压缩,所以要用terser-webpack-plugin
+const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production',
   performance: {
@@ -8,13 +10,30 @@ module.exports = {
   },
   entry: './src/main.js',
   output: {
-    filename: 'index[hash].js',
+    filename: 'index[hash:8].js',
     path: path.resolve(__dirname, 'dist')
+  },
+  devServer:{
+    open:true,
+    port:3000,
+    contentBase: path.join(__dirname, "src"),
+    compress: true
+  },
+  optimization: {
+    minimizer: [ new TerserJSPlugin({}),new OptimizeCSSAssetsPlugin({})]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: '首页',
-      template: 'src/views/index.html'
+      template: 'src/views/index.html',
+      minify:{
+        removeAttributeQuotes:true,//去掉html标签属性中的引号
+        // collapseWhitespace:true //去掉html中的空格
+      },
+      hash:true
+    }),
+    new MiniCssExtractPlugin({
+      filename:'main.css'
     })
   ],
   module: {
@@ -22,8 +41,9 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       },
