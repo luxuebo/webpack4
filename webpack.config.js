@@ -66,12 +66,14 @@ module.exports = {
     },
   module: {
     rules: [
+      //使用eslint
       // {
       //   test:/\.js$/,
       //   exclude:/node_modules/,
       //   use:'eslint-loader',
       //   enforce: 'pre'
       // },
+      //全局暴露jquery，需要在每一个js模块中导入，通过$来使用
       // { 
       //   test: require.resolve("jquery"), 
       //   loader: "expose-loader?$" 
@@ -115,7 +117,7 @@ module.exports = {
         use: {
           loader:'file-loader',
           options:{
-            limit:200*1024,//图片大于200k时,使用file-loader来产出图片,否则使用base64
+            limit:200*1024,//图片大于200k时,使用file-loader来产出图片,否则使用base64打包导出
             outputPath:'static/img/',
           }
         }
@@ -134,7 +136,7 @@ module.exports = {
       },
       {
         test: /\.(htm|html)$/i,
-        use: 'html-withimg-loader'//在html直接引用图片
+        use: 'html-withimg-loader'//在html中直接引用图片
       }
     ]
   }
