@@ -88,3 +88,16 @@ npm install --save @babel/runtime
 1.npm install --save-dev eslint eslint-loader  
 2.根目录下创建.eslintrc.json 文件,设置规则
 ```
+## 全局变量
+```
+1.暴露到window  
+npm install --save expose-loader 
+2.注入到每一个模块
+new webpack.ProvidePlugin({
+  $:'jquery'
+})
+3.外部引入,不打包
+externals:{
+  jquery:'$'
+},
+```

@@ -1,10 +1,11 @@
 const path = require('path');
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   performance: {
     hints: false
   },
@@ -36,16 +37,26 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
+    }),
+    new webpack.ProvidePlugin({
+      $:'jquery'//在每一个模块中注入jquery,用$来代替
     })
   ],
+  externals:{
+    // jquery:'$'//jquery如果是外部引入的(例如cdn),通过import 或require到模块中的jquery则不会打包
+    },
   module: {
     rules: [
-      {
-        test:/\.js$/,
-        exclude:/node_modules/,
-        use:'eslint-loader',
-        enforce: 'pre'
-      },
+      // {
+      //   test:/\.js$/,
+      //   exclude:/node_modules/,
+      //   use:'eslint-loader',
+      //   enforce: 'pre'
+      // },
+      // { 
+      //   test: require.resolve("jquery"), 
+      //   loader: "expose-loader?$" 
+      // },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,

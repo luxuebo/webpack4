@@ -1,12 +1,14 @@
 // import _ from 'lodash';
-let a1 = [
-    1,2,3,4
-];
 import './css/index.css';
 import './css/index.scss';
 import bg from './assets/image/laobi.png';
 import DataXml from './mock/data.xml';
 import DataJson from './mock/data.json';
+// import $ from 'jquery';
+// import jq from './js/a';
+// console.log(window.$)
+// console.log(jq.jq)
+console.log($)
 
 function component() {
     var element = document.createElement('div');
