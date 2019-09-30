@@ -31,7 +31,9 @@ function component() {
 }
 
 document.body.appendChild(component());
-
+$('#toOtherPage').click(function(){
+    window.location.href = './other.html';
+})
 /*es6,7,8语法,需要babel */
 // let arrFn = () => {
 //     // console.log('111')

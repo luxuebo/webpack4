@@ -5,12 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文�
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
-  mode: 'development',//开发模式,和生产production模式
+  mode: 'production',//开发模式,和生产 production 模式
   performance: {
     hints: false
   },
   entry:{
-    'main':'./src/main.js'
+    'index':'./src/index.js',
+    'other':'./src/js/other.js'
   },
   output: {
     filename: 'js/[name][hash:8].js',
@@ -32,14 +33,29 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: '首页',
       template: 'src/views/index.html',
+      // favicon: 'src/static/iconfont/icon_192x192.png',
       minify: {
         removeAttributeQuotes: true,//去掉html标签属性中的引号
         // collapseWhitespace:true //去掉html中的空格
       },
-      hash: true
+      hash: true,
+      filename:'views/index.html',
+      chunks:['index']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'other',
+      template: 'src/views/other.html',
+      minify: {
+        removeAttributeQuotes: true,//去掉html标签属性中的引号
+        // collapseWhitespace:true //去掉html中的空格
+      },
+      hash: true,
+      filename:'views/other.html',
+      chunks:['other']
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/main.css'
+      filename: 'css/[name][hash:8].css',
+      chunkFilename: '[id].css',
     }),
     new webpack.ProvidePlugin({
       $:'jquery'//在每一个模块中注入jquery,用$来代替
