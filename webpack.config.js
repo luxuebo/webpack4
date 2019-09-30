@@ -5,18 +5,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文�
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
-  mode: 'development',
+  mode: 'development',//开发模式,和生产production模式
   performance: {
     hints: false
   },
-  entry: './src/main.js',
+  entry:{
+    'main':'./src/main.js'
+  },
   output: {
-    filename: 'index[hash:8].js',
+    filename: 'js/[name][hash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    open: true,
+    open: true,//自动打开浏览器
     port: 3000,
+    host:'localhost',
     contentBase: path.join(__dirname, "src"),
     compress: true
   },
@@ -36,7 +39,7 @@ module.exports = {
       hash: true
     }),
     new MiniCssExtractPlugin({
-      filename: 'main.css'
+      filename: 'css/main.css'
     }),
     new webpack.ProvidePlugin({
       $:'jquery'//在每一个模块中注入jquery,用$来代替
@@ -82,12 +85,24 @@ module.exports = {
           'sass-loader'
         ]
       },
-
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2|eto|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(woff|woff2|eto|ttf|otf)$/,
+        use: {
+          loader:'file-loader',
+          options:{
+            outputPath:'static/iconfont/'
+          }
+        }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: {
+          loader:'url-loader',
+          options:{
+            limit:200*1024,//图片大于200k时,使用file-loader来产出图片,否则使用base64
+            outputPath:'static/img/'
+          }
+        }
       },
       {
         test: /\.(csv|tsv)$/,
@@ -103,7 +118,7 @@ module.exports = {
       },
       {
         test: /\.(htm|html)$/i,
-        use: 'html-withimg-loader'
+        use: 'html-withimg-loader'//在html直接引用图片
       }
     ]
   }

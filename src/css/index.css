@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'MyFont';
-    src:url('../assets/iconfont/font.ttf') format('ttf');
+    src:url('../static/iconfont/font.ttf') format('ttf');
     font-weight: 600;
     font-style: normal;
 }
@@ -8,11 +8,10 @@
 .hello{
     font-family: 'MyFont';
     color:red;
-    background: url('../assets/image/laobi.png');
 }
 
 @media (min-resolution: 2dppx) {
     .image {
-      background-image: url('../assets/image/laobi.png');
+      background-image: url('../static/image/laobi.png');
     }
   }
