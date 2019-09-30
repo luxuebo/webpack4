@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx webpack",
     "dev": "webpack-dev-server"
   },
@@ -35,7 +34,11 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/runtime": "^7.6.2",
+    "D": "^1.0.0",
+    "babel-loader": "^8.0.6",
     "expose-loader": "^0.7.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15"

@@ -1,4 +1,4 @@
-import '../css/reset.css'
+import '../css/other.scss';
 function component() {
     var element = document.createElement('div');
     element.innerHTML = 'other';

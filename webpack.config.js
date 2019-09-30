@@ -5,12 +5,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文�
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
-  mode: 'production',//开发模式,和生产 production 模式
+  mode: 'production',//开发模式 development ,和生产 production 模式,开发模式下打包后代码不会压缩
   performance: {
     hints: false
   },
   entry:{
-    'index':'./src/index.js',
+    'index':'./src/js/index.js',
     'other':'./src/js/other.js'
   },
   output: {
@@ -26,35 +26,35 @@ module.exports = {
   },
   optimization: {
     minimizer: [new TerserJSPlugin({
-      chunkFilter: () => false,//是否压缩js文件,默认true
+      chunkFilter: () => true,//是否压缩js文件,默认true
     }), new OptimizeCSSAssetsPlugin({})]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '首页',
+      title: '学习webpack',
       template: 'src/views/index.html',
-      // favicon: 'src/static/iconfont/icon_192x192.png',
+      favicon: './src/static/iconfont/icon_192x192.png',
       minify: {
         removeAttributeQuotes: true,//去掉html标签属性中的引号
         // collapseWhitespace:true //去掉html中的空格
       },
       hash: true,
-      filename:'views/index.html',
+      filename:'index.html',//如果在加一层文件夹，例如views/index.html 会合html-withimg-loader冲突，导致在html中引入的img的路径不对，从而无法正常显示
       chunks:['index']
     }),
     new HtmlWebpackPlugin({
-      title: 'other',
+      title: '首页',
       template: 'src/views/other.html',
       minify: {
         removeAttributeQuotes: true,//去掉html标签属性中的引号
         // collapseWhitespace:true //去掉html中的空格
       },
       hash: true,
-      filename:'views/other.html',
+      filename:'other.html',
       chunks:['other']
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name][hash:8].css',
+      filename: '[name][hash:8].css',//如果写成css[name][hash:8].css 样式中引入的css背景不生效，路径不对
       chunkFilename: '[id].css',
     }),
     new webpack.ProvidePlugin({
@@ -113,10 +113,10 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: {
-          loader:'url-loader',
+          loader:'file-loader',
           options:{
             limit:200*1024,//图片大于200k时,使用file-loader来产出图片,否则使用base64
-            outputPath:'static/img/'
+            outputPath:'static/img/',
           }
         }
       },

@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
-    <link rel="shortcut icon" href=../static/iconfont/icon_192x192.png>
+    <title>学习wabpack</title>
+    <!--在开发环境可以用link标签，生产上无法将静态文件打包，可以在html-webpack-plug中加favicon，meta，等-->
+    <!-- <link rel="shortcut icon" href=../static/iconfont/icon_192x192.png> -->
 </head>
 <body>
-    <a href="./other.html">点击进入other页面</a>
-    <button id="toOtherPage">js控制跳转到other页面</button>
-
-    <!-- <img src="../static/image/laobi.png" alt=""> -->
+    #include("../commonpages/title.html")
+    <div><button id="toOtherPage">转到other页面</button></div>
+    <img class='img' src="../static/image/laobi.png" alt=""><br>
+    <span class="bg-orange">背景图片</span>
+    <div class='img bg'>qqqq</div>
 </body>
 </html>

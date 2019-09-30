@@ -1,4 +1,24 @@
+@import './common/reset.css';
+@import './common/a.scss';
 $p:30px;
 .fontsize{
     font-size: $p;
+}
+@font-face {
+    font-family: 'MyFont';
+    src:url('../static/iconfont/font.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+.hello{
+    font-family: 'MyFont';
+    color:red;
+}
+.img{
+  width: 200px;
+  height: 200px;
+  display:inline-block;
+}
+.img.bg{
+  background: url('../static/image/laobi.png')
 }

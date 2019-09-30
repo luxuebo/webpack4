@@ -1,14 +1,8 @@
 // import _ from 'lodash';
-import './css/index.css';
-import './css/index.scss';
-import bg from './static/image/laobi.png';
-import DataXml from './mock/data.xml';
-import DataJson from './mock/data.json';
-// import $ from 'jquery';
-// import jq from './js/a';
-// console.log(window.$)
-// console.log(jq.jq)
-// console.log($)
+import '../css/index.scss';
+import bg from '../static/image/laobi.png';
+import DataXml from '../mock/data.xml';
+import DataJson from '../mock/data.json';
 
 function component() {
     var element = document.createElement('div');
@@ -32,7 +26,9 @@ function component() {
 
 document.body.appendChild(component());
 $('#toOtherPage').click(function(){
-    window.location.href = './other.html';
+    console.log('wuwuw')
+    // window.location.href = './other.html';
+    window.open('./other.html')
 })
 /*es6,7,8语法,需要babel */
 // let arrFn = () => {
