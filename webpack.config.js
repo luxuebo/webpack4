@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//会覆盖js的压缩,所以要用terser-webpack-plugin
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production',
@@ -46,12 +46,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
+            plugins: [
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose": true }]
+            ]
           },
-          // plugins: [
-          //   ["@babel/plugin-proposal-decorators", { "legacy": true }],
-          //   ["@babel/plugin-proposal-class-properties", { "loose": true }]
-          // ]
+
         }
       },
       {

@@ -25,21 +25,21 @@ function component() {
     return element;
 }
 
-let arrFn= () => {
+
+
+document.body.appendChild(component());
+/*es6,7,8语法,需要babel */
+let arrFn = () => {
     // console.log('111')
 }
 arrFn();
 
-document.body.appendChild(component());
-
-// @log
-class A{
+@log
+class A {
     // a = 1;
 }
 let a = new A();
-console.log(a)
-// function log(){
-
-// console.log(A)
-// }
+function log(target) {
+    console.log(target)
+}
 

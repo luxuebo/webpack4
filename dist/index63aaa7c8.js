@@ -106,6 +106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mock_data_xml__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mock_data_xml__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _mock_data_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
 var _mock_data_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(5, 1);
+var _class;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // import _ from 'lodash';
@@ -133,18 +135,23 @@ function component() {
   return element;
 }
 
+document.body.appendChild(component());
+/*es6,7,8语法,需要babel */
+
 var arrFn = function arrFn() {// console.log('111')
 };
 
 arrFn();
-document.body.appendChild(component());
 
-var A = function A() {
+var A = log(_class = function A() {
   _classCallCheck(this, A);
-};
+}) || _class;
 
 var a = new A();
-console.log(a);
+
+function log(target) {
+  console.log(target);
+}
 
 /***/ }),
 /* 2 */
