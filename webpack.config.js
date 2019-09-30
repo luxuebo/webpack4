@@ -41,6 +41,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test:/\.js$/,
+        exclude:/node_modules/,
+        use:'eslint-loader',
+        enforce: 'pre'
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -49,7 +55,8 @@ module.exports = {
             presets: ['@babel/preset-env'],
             plugins: [
               ["@babel/plugin-proposal-decorators", { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose": true }]
+              ["@babel/plugin-proposal-class-properties", { "loose": true }],
+              "@babel/plugin-transform-runtime"
             ]
           },
 

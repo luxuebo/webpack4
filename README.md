@@ -75,8 +75,16 @@ optimization: {
 ```
 npm i D babel-loader @babel/core @babel/preset-env
 ```
-## balel 插件
+## balel 插件(支持js高级语法)
 ```
-npm install --save-dev @babel/plugin-proposal-class-properties //支持es7 比如class
+npm install --save-dev @babel/plugin-proposal-class-properties //支持类
 npm i -D @babel/plugin-proposal-decorators
+
+npm install --save-dev @babel/plugin-transform-runtime//支持generator函数等
+npm install --save @babel/runtime
+```
+## eslint 
+```
+1.npm install --save-dev eslint eslint-loader  
+2.根目录下创建.eslintrc.json 文件,设置规则
 ```

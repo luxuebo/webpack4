@@ -1,4 +1,7 @@
 // import _ from 'lodash';
+let a1 = [
+    1,2,3,4
+];
 import './css/index.css';
 import './css/index.scss';
 import bg from './assets/image/laobi.png';
@@ -25,9 +28,8 @@ function component() {
     return element;
 }
 
-
-
 document.body.appendChild(component());
+
 /*es6,7,8语法,需要babel */
 let arrFn = () => {
     // console.log('111')
@@ -40,6 +42,16 @@ class A {
 }
 let a = new A();
 function log(target) {
-    console.log(target)
+    // console.log(target)
 }
+
+function *ge(){
+    yield 'haha';
+    return 'ending';
+}
+let geResult = ge().next();
+// console.log(geResult)
+
+let clu = "foobar".includes("foo");
+// console.log(clu)
 
