@@ -10,7 +10,7 @@ module.exports = {
   mode: 'development',//开发模式 development ,和生产 production 模式,开发模式下打包后代码不会压缩
   devtool:'source-map',//源码映射
   performance: {
-    hints: false
+    hints: false,//不展示警告或错误提示
   },
   entry:{
     'index':'./src/js/index.js',
@@ -80,7 +80,10 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'history', to: 'history' },
     ]),
-    new webpack.BannerPlugin({banner: 'study webpack4'})//在每一个打包后的js文件头部加上一句话
+    new webpack.BannerPlugin({banner: 'study webpack4'}),//在每一个打包后的js文件头部加上一句话
+    new webpack.DefinePlugin({
+      ENV:JSON.stringify("production"),//全局常量
+    })
   ],
   externals:{
     // jquery:'$'//jquery如果是外部引入的(例如cdn),通过import 或require到模块中的jquery则不会打包

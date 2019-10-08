@@ -1,6 +1,6 @@
 /*!other.js */
 import ut from 'Utilities';
-console.log(ut)
+// console.log(ut)
 import '../css/other.scss';
 function component() {
     var element = document.createElement('div');
@@ -8,3 +8,4 @@ function component() {
     return element;
 }
 document.body.appendChild(component());
+// console.log(ENV)
