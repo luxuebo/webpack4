@@ -30,6 +30,8 @@ $('#toOtherPage').click(function(){
     // window.location.href = './other.html';
     window.open('./other.html')
 })
+
+// console.l('source-map')
 /*es6,7,8语法,需要babel */
 // let arrFn = () => {
 //     // console.log('111')
@@ -54,4 +56,5 @@ $('#toOtherPage').click(function(){
 
 // let clu = "foobar".includes("foo");
 // // console.log(clu)
+
 

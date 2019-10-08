@@ -101,3 +101,16 @@ externals:{
   jquery:'$'
 },
 ```
+## source-map
+```
+devtool:'source-map';//产生单独的文件,如果出错显示出错的源码位置
+devtool:'eval-source-map';//不产生单独的文件,如果出错显示出错的源码位置
+```
+## 打包之前清除文件夹(plugin)
+```
+npm install clean-webpack-plugin -D
+```
+## 复制文佳夹到打包目录中
+```
+npm install copy-webpack-plugin -D
+```
