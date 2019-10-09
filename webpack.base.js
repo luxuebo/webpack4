@@ -41,7 +41,7 @@ module.exports = {
       },
       hash: true,
       filename:'index.html',//如果在加一层文件夹，例如views/index.html 会合html-withimg-loader冲突，导致在html中引入的img的路径不对，从而无法正常显示
-      chunks:['index']
+      chunks:['lodash','jquery','common','index']
     }),
     new HtmlWebpackPlugin({
       title: '首页',
@@ -52,7 +52,7 @@ module.exports = {
       },
       hash: true,
       filename:'other.html',
-      chunks:['other']
+      chunks:['lodash','jquery','common','other']
     }),
     new MiniCssExtractPlugin({
       filename: '[name][hash:8].css',//如果写成css[name][hash:8].css 样式中引入的css背景不生效，路径不对

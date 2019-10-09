@@ -1,11 +1,6 @@
-/*!other.js */
-import ut from 'Utilities';
-// console.log(ut)
+import utils from './utils';
+import _ from 'lodash';
+console.log(_)
+console.log(utils.ulitls);
+console.log($)
 import '../css/other.scss';
-function component() {
-    var element = document.createElement('div');
-    element.innerHTML = 'other';
-    return element;
-}
-document.body.appendChild(component());
-// console.log(ENV)

@@ -114,3 +114,5 @@ npm install clean-webpack-plugin -D
 ```
 npm install copy-webpack-plugin -D
 ```
+## 多页应用抽离公共代码
+optimization.splitChunks

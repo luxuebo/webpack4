@@ -1,3 +1,3 @@
 export default{
-    ulitls:'qa'
+    ulitls:'00000---------------------------0000'
 }
