@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.base.js');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = merge(base, {
@@ -37,5 +38,22 @@ module.exports = merge(base, {
     },
     plugins:[
         new CleanWebpackPlugin(),//打包之前清除dist文件夹的内容
-    ]
+        new MiniCssExtractPlugin({
+            filename: '[name][hash:8].css',//如果写成css[name][hash:8].css 样式中引入的css背景不生效，路径不对
+            chunkFilename: '[id].css',
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            },
+        ]
+    }
 });

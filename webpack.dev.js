@@ -6,6 +6,7 @@ module.exports = merge(base, {
     devtool: 'source-map',//源码映射
     mode: 'development',
     devServer: {
+        hot: true,
         open: true,//自动打开浏览器
         port: 3000,
         host: 'localhost',
@@ -17,5 +18,18 @@ module.exports = merge(base, {
                 pathRewrite: { '^/api': '' }
             }
         }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(css|scss)$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            },
+        ]
     }
 });

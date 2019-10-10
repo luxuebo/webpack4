@@ -119,3 +119,26 @@ optimization.splitChunks
 注意name属性必填,在HtmlWebpackPlugin的chunks数组中按照需要的顺序加入,打包后的html中才会引入抽离出来的js文件,并且是按照chunks数组中的顺序依次引入.
 ## 懒加载
 import()导入js文件,得到的是一个promise
+## 热更新
+```
+devServer: {
+  contentBase: './src',
+  hot: true,
+}
+
+index.js:
+import utils from './utils';
+import hmr from './hmr';
+import '../css/index.scss';
+if (module.hot) {
+    module.hot.accept('./utils', function() {
+      console.log(utils)
+    })
+
+    module.hot.accept('./hmr', function() {
+        hmr();
+    })
+}
+
+tips:css热更新不能使用mini-css-extract-plugin插件,否则css不能热更新
+```

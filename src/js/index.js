@@ -1,5 +1,7 @@
-import utils from './utils'
+import utils from './utils';
 import _ from 'lodash';
+import '../css/index.scss';
+import hmr from './hmr';
 $('#toOtherPage').click(function(){
     // window.location.href = './other.html';
     window.open('./other.html')
@@ -10,4 +12,14 @@ $('#lazyLoad').click(()=>{
         console.log(res.default)
     })
 })
+//热更新
+if (module.hot) {
+    module.hot.accept('./utils', function() {
+      console.log(utils)
+    })
+
+    module.hot.accept('./hmr', function() {
+        hmr();
+    })
+  }
 

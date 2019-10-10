@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');//复制文件
@@ -53,10 +52,6 @@ module.exports = {
       filename:'other.html',
       chunks:['lodash','jquery','common','other']
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name][hash:8].css',//如果写成css[name][hash:8].css 样式中引入的css背景不生效，路径不对
-      chunkFilename: '[id].css',
-    }),
     new webpack.ProvidePlugin({
       $:'jquery'//在每一个模块中注入jquery,用$来代替
     }),
@@ -100,15 +95,6 @@ module.exports = {
           },
 
         }
-      },
-      {
-        test: /\.(css|scss)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
       },
       {
         test: /\.(woff|woff2|eto|ttf|otf)$/,
