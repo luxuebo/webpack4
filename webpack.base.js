@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');//抽离css文件
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css,会覆盖js的压缩,所以要用terser-webpack-plugin
 const TerserJSPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');//打包之前删除输出文件夹
 const CopyWebpackPlugin = require('copy-webpack-plugin');//复制文件
 module.exports = {
   performance: {
@@ -61,7 +60,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       $:'jquery'//在每一个模块中注入jquery,用$来代替
     }),
-    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: 'history', to: 'history' },
     ]),
