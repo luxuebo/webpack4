@@ -115,4 +115,5 @@ npm install clean-webpack-plugin -D
 npm install copy-webpack-plugin -D
 ```
 ## 多页应用抽离公共代码
-optimization.splitChunks
+optimization.splitChunks  
+注意name属性必填,在HtmlWebpackPlugin的chunks数组中按照需要的顺序加入,打包后的html中才会引入抽离出来的js文件,并且是按照chunks数组中的顺序依次引入.
