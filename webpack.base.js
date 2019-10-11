@@ -60,7 +60,7 @@ module.exports = {
     ]),
     new webpack.BannerPlugin({banner: 'study webpack4'}),//在每一个打包后的js文件头部加上一句话
     new webpack.DefinePlugin({
-      ENV:JSON.stringify("production"),//全局常量
+      ENV:JSON.stringify("GLOBAL"),//全局常量
     })
   ],
   externals:{

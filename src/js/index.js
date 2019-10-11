@@ -12,8 +12,11 @@ $('#lazyLoad').click(()=>{
         console.log(res.default)
     })
 })
+//全局常量ENV
+// console.log(ENV)
 //热更新
 if (module.hot) {
+    
     module.hot.accept('./utils', function() {
       console.log(utils)
     })

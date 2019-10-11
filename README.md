@@ -101,6 +101,17 @@ externals:{
   jquery:'$'
 },
 ```
+## 全局常量
+1.定义
+```
+new webpack.DefinePlugin({
+    ENV:JSON.stringify("GLOBAL")
+})
+```
+2.使用(可以在任何一个js文件中使用)
+```
+console.log(ENV)
+```
 ## source-map
 ```
 devtool:'source-map';//产生单独的文件,如果出错显示出错的源码位置
